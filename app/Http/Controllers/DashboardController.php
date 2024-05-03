@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $data['header_title'] = 'Dashboard';
+        $data['header_title'] = 'Dashboard - ';
         $view = match ((int)Auth::user()->user_type) {
             1 => 'admin.dashboard',
             2 => 'teacher.dashboard',

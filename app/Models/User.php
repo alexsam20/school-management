@@ -20,6 +20,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_type',
+        'is_delete',
     ];
 
     /**
@@ -43,6 +45,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public static function getSingle($id)
+    {
+        return self::find($id);
+    }
+
+    public static function getRecords()
+    {
+        return self::select('users.*')
+            ->where('user_type', '=', 1)
+            ->where('is_delete', '=', 0)
+            ->orderBy('id', 'desc')
+            ->get();
     }
 
     public static function getEmailSingle($email)
