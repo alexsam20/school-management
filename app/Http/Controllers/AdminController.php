@@ -50,7 +50,7 @@ class AdminController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
         $request->validate([
             'name' => 'required',
